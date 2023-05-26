@@ -1,1 +1,53 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+.body {
+  background-color: green;
+}
+
+.card {
+  width: 200px;
+  height: 300px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  justify-content: center;
+  padding: 20px;
+  margin: 60px;
+}
+
+.upper-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 12px;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 12px;
+}
+
+.custom-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+  background-color: #0056b3;
+  color: #fff;
+  text-decoration: none;
+}
