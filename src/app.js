@@ -18,8 +18,14 @@ window.onload = function() {
   generateDOMCard();
 
   const generateNewCardButton = document.getElementById("push-to-generate");
+  const interval = setTimeout(() => {
+    generateDOMCard();
+  }, 10000);
 
-  generateNewCardButton.addEventListener("click", () => generateDOMCard());
+  generateNewCardButton.addEventListener("click", () => {
+    generateDOMCard();
+    clearTimeout(interval);
+  });
 };
 
 function generarCarta() {
@@ -40,7 +46,9 @@ function generarCarta() {
     "K"
   ];
 
-  var paloAleatorio = palos[Math.floor(Math.random() * palos.length)];
+  const aleatorio = Math.floor(Math.random() * palos.length);
+  console.log(palos, palos[2], aleatorio);
+  var paloAleatorio = palos[aleatorio];
   var valorAleatorio = valores[Math.floor(Math.random() * valores.length)];
 
   return { paloAleatorio, valorAleatorio };
@@ -48,11 +56,22 @@ function generarCarta() {
 
 function generateDOMCard() {
   const newCardValues = generarCarta();
-  // console.log(generarCarta());
+  console.log(newCardValues);
   const htmlSymbols = document.getElementsByClassName("card-title");
-  // console.log(htmlSymbols);
+  const htmlText = document.querySelector(".card-text");
+
   for (const element of htmlSymbols) {
     element.innerHTML = newCardValues.paloAleatorio;
+    if (
+      newCardValues.paloAleatorio === "♥" ||
+      newCardValues.paloAleatorio === "♦"
+    ) {
+      element.classList.add("red-palo"); // Agregar clase adicional para palos rojos
+      htmlText.classList.add("red-palo");
+    } else {
+      element.classList.remove("red-palo"); // Remover clase adicional si no es palo rojo
+      htmlText.classList.remove("red-palo");
+    }
   }
 
   // Sabemos que siempre nos dará un array, pero nosotros solo queremos el primero

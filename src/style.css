@@ -2,6 +2,8 @@
 
 .body {
   background-color: green;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
@@ -11,10 +13,28 @@
   border: 1px solid #dee2e6;
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  align-items: center;
   justify-content: center;
   padding: 20px;
   margin: 60px;
+}
+
+.container-fluid {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 45px; /* Tamaño de fuente para el Palo */
+}
+
+.card-text {
+  font-size: 60px; /* Tamaño de fuente para el Nº */
+}
+
+.red-palo {
+  color: red;
 }
 
 .upper-left {
