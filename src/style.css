@@ -1,73 +1,88 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
 .body {
-  background-color: green;
   justify-content: center;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  background-color: #075e54;
 }
 
-.card {
+.tittle {
+  font-size: 34px;
+  font-weight: bold;
+  color: #fffb2af8;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 70px;
+  margin-bottom: 40px;
+}
+
+#card-body {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   width: 200px;
   height: 300px;
-  background-color: #ffffff;
-  border: 1px solid #dee2e6;
-  border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  align-items: center;
   justify-content: center;
-  padding: 20px;
-  margin: 60px;
-}
-
-.container-fluid {
-  display: flex;
   align-items: center;
-  flex-direction: column;
+  margin-top: 90px;
+  margin-bottom: 100px;
 }
 
-.card-title {
-  font-size: 45px; /* Tamaño de fuente para el Palo */
-}
-
-.card-text {
-  font-size: 60px; /* Tamaño de fuente para el Nº */
-}
-
-.red-palo {
-  color: red;
-}
-
-.upper-left {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 12px;
-}
-
-.bottom-right {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 12px;
-}
-
-.custom-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
+#card-number {
+  font-size: 48px;
   font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  color: #000;
 }
 
-.custom-btn:hover {
-  background-color: #0056b3;
+.card-suit {
+  font-size: 36px;
+  color: #000;
+}
+
+.new-card-boton {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#new-card {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 16px;
+  padding: 10px 18px;
+  font-size: 18px;
+  font-weight: bold;
   color: #fff;
-  text-decoration: none;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+#new-card:hover {
+  background-color: #0060c7;
+}
+
+input {
+  margin: 10px auto;
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+input:focus {
+  outline: none;
 }

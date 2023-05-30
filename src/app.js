@@ -51,7 +51,7 @@ window.onload = function() {
 
   setInterval(() => {
     generateCard(suitList, numbersList, redElements);
-  }, 2000);
+  }, 7000);
 };
 
 const updateSide = (type, card, newValue) => {
