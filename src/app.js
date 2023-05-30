@@ -5,33 +5,11 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-/**
- * 1. Generar carta random
- * 2. Conseguir los elementos que queremos modificar
- *  2.1 Usamos el getElementsByClassName para conseguir todos los elementos que contienen los palos (HTML)
- * 3. Recorrer todos los elementos y modificar el contenido usando el paloAleatorio the carta random -> generarCarta
- * 4. Conseguir los elementos del dom que tienen la clase card-text (HTML)
- * 5. Modificar el contenido de htmlNumber con el valorAleatorio
- */
-
 window.onload = function() {
-  generateDOMCard();
+  const suitList = ["♣", "♦", "♥", "♠"];
 
-  const generateNewCardButton = document.getElementById("push-to-generate");
-  const interval = setTimeout(() => {
-    generateDOMCard();
-  }, 10000);
-
-  generateNewCardButton.addEventListener("click", () => {
-    generateDOMCard();
-    clearTimeout(interval);
-  });
-};
-
-function generarCarta() {
-  var palos = ["♠", "♥", "♣", "♦"];
-  var valores = [
-    "As",
+  const redElements = ["♦", "♥"];
+  const numbersList = [
     "2",
     "3",
     "4",
@@ -43,39 +21,94 @@ function generarCarta() {
     "10",
     "J",
     "Q",
-    "K"
+    "K",
+    "A"
   ];
 
-  const aleatorio = Math.floor(Math.random() * palos.length);
-  console.log(palos, palos[2], aleatorio);
-  var paloAleatorio = palos[aleatorio];
-  var valorAleatorio = valores[Math.floor(Math.random() * valores.length)];
+  // Ejecución en refresh
+  generateCard(suitList, numbersList, redElements);
 
-  return { paloAleatorio, valorAleatorio };
+  // Asignación de los elementos del dom con los que queremos interactuar
+  const createCardButton = document.getElementById("new-card");
+
+  const widthInput = document.getElementById("card-width");
+  const heigthInput = document.getElementById("card-heigth");
+  const cardElement = document.getElementById("card-body");
+
+  // Asignación de event handlers
+  const onClickEventNewButtonEventHandler = () =>
+    generateCard(suitList, numbersList, redElements);
+
+  createCardButton.addEventListener("click", onClickEventNewButtonEventHandler);
+
+  widthInput.addEventListener("input", e =>
+    updateSide("width", cardElement, e.target.value)
+  );
+
+  heigthInput.addEventListener("input", e =>
+    updateSide("height", cardElement, e.target.value)
+  );
+
+  setInterval(() => {
+    generateCard(suitList, numbersList, redElements);
+  }, 2000);
+};
+
+const updateSide = (type, card, newValue) => {
+  const availableTypes = ["height", "width"];
+
+  const limits = {
+    min: 200,
+    max: 500
+  };
+
+  if (
+    newValue <= limits.max &&
+    newValue >= limits.min &&
+    availableTypes.includes(type)
+  )
+    card.style[type] = newValue + "px";
+};
+
+/**
+ * Definición de funciones
+ */
+const selectRandomItem = array => {
+  return array[Math.floor(Math.random() * array.length)];
+};
+
+const generateCard = (suitList, numbersList, redElements) => {
+  const selectedSuit = selectRandomItem(suitList); // suitList[Math.floor(Math.random() * suitList.length)];
+  const selectedNumbersList = selectRandomItem(numbersList);
+
+  const numberDomElement = document.getElementById("card-number");
+  numberDomElement.textContent = selectedNumbersList;
+
+  const isRed = redElements.includes(selectedSuit);
+
+  const suitDomElements = document.querySelectorAll(".card-suit");
+
+  suitDomElements.forEach(elem => {
+    elem.textContent = selectedSuit;
+    elem.style.color = isRed ? "red" : "black";
+  });
+};
+
+/**
+ * Other implementations
+ *
+ */
+
+/*
+  const suitDomElementsCollection = document.getElementsByClassName(
+    "card-suit"
+  );
+  const suitsLength = suitDomElementsCollection.length;
+  for (let i = 0; i < suitsLength; i++) {
+    const element = suitDomElementsCollection[i];
+    element.textContent = selectedSuit;
+    element.style.color = isRed ? "red" : "black";
+    function selectRandomItemNormal(array) {
+  return array[Math.floor(Math.random() * array.length)];
 }
-
-function generateDOMCard() {
-  const newCardValues = generarCarta();
-  console.log(newCardValues);
-  const htmlSymbols = document.getElementsByClassName("card-title");
-  const htmlText = document.querySelector(".card-text");
-
-  for (const element of htmlSymbols) {
-    element.innerHTML = newCardValues.paloAleatorio;
-    if (
-      newCardValues.paloAleatorio === "♥" ||
-      newCardValues.paloAleatorio === "♦"
-    ) {
-      element.classList.add("red-palo"); // Agregar clase adicional para palos rojos
-      htmlText.classList.add("red-palo");
-    } else {
-      element.classList.remove("red-palo"); // Remover clase adicional si no es palo rojo
-      htmlText.classList.remove("red-palo");
-    }
-  }
-
-  // Sabemos que siempre nos dará un array, pero nosotros solo queremos el primero
-  const htmlNumberCollection = document.getElementsByClassName("card-text");
-  const htmlNumber = htmlNumberCollection.item(0);
-  htmlNumber.innerHTML = newCardValues.valorAleatorio;
-}
+  }*/

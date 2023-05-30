@@ -17,29 +17,16 @@
     />
     <script src="./app.js"></script>
   </head>
-  <body class="body">
-    <!-- tittle -->
-    <div class="container-fluid text-center">
-      <h1 class="mt-5" style="color:rgb(241, 233, 0)">P O K E R - C A R D S</h1>
-
-      <!-- card -->
-      <div class="card">
-        <div class="upper-left">
-          <h5 class="card-title" id="palo">♣</h5>
-        </div>
-
-        <p class="card-text" id="num">Nº</p>
-
-        <div class="bottom-right">
-          <h5 class="card-title" id="palo">♣</h5>
-        </div>
-      </div>
-
-      <!-- btn -->
-
-      <button id="push-to-generate" class="custom-btn">
-        Push to generate
-      </button>
+  <body class="bg-success">
+    <div id="card-body" class="container-fluid text-center bg-white p-5">
+      <p class="card-suit">♣</p>
+      <p id="card-number">5</p>
+      <p class="card-suit">♣</p>
+      <button id="new-card">Give me a card</button>
+    </div>
+    <div class="card">
+      <input id="card-heigth" placeholder="Heigth" type="number" />
+      <input id="card-width" placeholder="Width" type="number" />
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
