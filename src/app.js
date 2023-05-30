@@ -58,7 +58,7 @@ const updateSide = (type, card, newValue) => {
   const availableTypes = ["height", "width"];
 
   const limits = {
-    min: 200,
+    min: 250,
     max: 500
   };
 

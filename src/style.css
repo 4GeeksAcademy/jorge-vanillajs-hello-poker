@@ -22,6 +22,7 @@
 }
 
 #card-body {
+  text-align: center;
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -31,7 +32,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 90px;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 
 #card-number {
@@ -43,6 +44,20 @@
 .card-suit {
   font-size: 36px;
   color: #000;
+}
+
+.card-suit text-left {
+  text-align: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card-suit text-right {
+  text-align: end;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .new-card-boton {
